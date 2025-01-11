@@ -8,7 +8,7 @@ import { qwikCity } from "@builder.io/qwik-city/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import pkg from "./package.json";
 import path from "node:path";
-
+import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
 type PkgDep = Record<string, string>;
 const { dependencies = {}, devDependencies = {} } = pkg as any as {
   dependencies: PkgDep;
@@ -22,7 +22,14 @@ errorOnDuplicatesPkgDeps(devDependencies, dependencies);
  */
 export default defineConfig(({ command, mode }): UserConfig => {
   return {
-			plugins: [qwikCity(), qwikVite(), tsconfigPaths()],
+			plugins: [
+				qwikCity(),
+				qwikVite(),
+				tsconfigPaths(),
+				vanillaExtractPlugin({
+					// configuration
+				}),
+			],
 			resolve: {
 				alias: {
 					"@": path.resolve(__dirname, "./src"),
