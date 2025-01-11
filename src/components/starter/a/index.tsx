@@ -6,7 +6,7 @@ export default component$(() => {
     <>
       <p class={css.a}>
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda sit
-        molestiae excepturi cumque id placeat odit. Earum quos architecto
+        molestiae excepturi id placeat odit. Earum quos architecto
         accusamus nisi! Perferendis quisquam veritatis, ducimus commodi ratione
         provident. Hic quos ratione, maiores temporibus, nihil qui eos officia,
         corrupti quidem praesentium obcaecati. Iusto eius quibusdam ratione
