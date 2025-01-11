@@ -5,10 +5,11 @@ import Counter from "../components/starter/counter/counter";
 import Hero from "../components/starter/hero/hero";
 import Infobox from "../components/starter/infobox/infobox";
 import Starter from "../components/starter/next-steps/next-steps";
-
+import A from "@components/starter/a"
 export default component$(() => {
   return (
     <>
+      <A />
       <Hero />
       <Starter />
 
