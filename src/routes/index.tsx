@@ -13,7 +13,9 @@ export default component$(() => {
       <Hero />
       <Starter />
 
-      <div role="presentation" class="ellipsis"></div>
+      {/* biome-ignore lint/style/useSelfClosingElements: <explanation> */}
+<div role="presentation" class="ellipsis"></div>
+      {/* biome-ignore lint/style/useSelfClosingElements: <explanation> */}
       <div role="presentation" class="ellipsis ellipsis-purple"></div>
 
       <div class="container container-center container-spacing-xl">
