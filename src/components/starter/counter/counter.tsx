@@ -27,7 +27,7 @@ export default component$(() => {
         class="button-dark button-small"
         onClick$={() => setCount(count.value + 1)}
       >
-        +
+        +f
       </button>
     </div>
   );

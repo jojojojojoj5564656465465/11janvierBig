@@ -5,16 +5,18 @@ import Counter from "../components/starter/counter/counter";
 import Hero from "../components/starter/hero/hero";
 import Infobox from "../components/starter/infobox/infobox";
 import Starter from "../components/starter/next-steps/next-steps";
-import A from "@components/starter/a"
+import A from "@components/starter/a/A";
+import Carrousel from "@components/starter/carrousel"
 export default component$(() => {
   return (
     <>
+      <Carrousel />
       <A />
       <Hero />
       <Starter />
 
       {/* biome-ignore lint/style/useSelfClosingElements: <explanation> */}
-<div role="presentation" class="ellipsis"></div>
+      <div role="presentation" class="ellipsis"></div>
       {/* biome-ignore lint/style/useSelfClosingElements: <explanation> */}
       <div role="presentation" class="ellipsis ellipsis-purple"></div>
 
@@ -73,26 +75,42 @@ export default component$(() => {
             <ul>
               <li>
                 <span>Questions or just want to say hi? </span>
-                <a href="https://qwik.dev/chat" target="_blank">
+                <a
+                  href="https://qwik.dev/chat"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   Chat on discord!
                 </a>
               </li>
               <li>
                 <span>Follow </span>
-                <a href="https://twitter.com/QwikDev" target="_blank">
+                <a
+                  href="https://twitter.com/QwikDev"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   @QwikDev
                 </a>
                 <span> on Twitter</span>
               </li>
               <li>
                 <span>Open issues and contribute on </span>
-                <a href="https://github.com/QwikDev/qwik" target="_blank">
+                <a
+                  href="https://github.com/QwikDev/qwik"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   GitHub
                 </a>
               </li>
               <li>
                 <span>Watch </span>
-                <a href="https://qwik.dev/media/" target="_blank">
+                <a
+                  href="https://qwik.dev/media/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   Presentations, Podcasts, Videos, etc.
                 </a>
               </li>

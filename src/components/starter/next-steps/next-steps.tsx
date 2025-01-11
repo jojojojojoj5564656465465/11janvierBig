@@ -36,7 +36,7 @@ export default component$(() => {
   useOnWindow(
     "keydown",
     $((e) => {
-      if ((e).key === "Alt") {
+      if (e.key === "Alt") {
         gettingStartedStep.value = 1;
       }
     }),

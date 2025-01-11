@@ -18,9 +18,11 @@
     "noEmit": true,
     "paths": {
       "~/*": ["./src/*"],
-      "@components/*":["./src/components/*"]
+      "@/*": ["./src/*"],
+      "@components/*": ["./src/components/*"],
+      "@theme": ["./src/styles/ThemeContract.css.ts"]
     }
   },
-  "files": ["./.eslintrc.cjs"],
+  "files": [".eslintrc.cjs"],
   "include": ["src", "./*.d.ts", "./*.config.ts"]
 }
