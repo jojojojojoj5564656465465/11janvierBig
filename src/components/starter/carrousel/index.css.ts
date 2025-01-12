@@ -51,49 +51,69 @@ export const responsiveTheme = style({
   },
 });
 export const sectionWrapperCardButtons = style([
-  container.large,
-  {
-    scrollbarWidth: "thin",
-    scrollbarGutter: "stable",
-    scrollbarColor: `${theme.color.azure} transparent`,
-    backgroundColor: "oklch(70% 0.1 304 / 69.17%)",
-    display: ["inline", "flex"],
-    marginInline: "auto",
-    "@supports": {
-      "(display: grid)": {
-        display: "grid",
-        gridTemplateColumns: "max-content auto max-content ",
-        justifyContent: "center",
-      },
-    },
-  },
+	container.large,
+	{
+		scrollbarWidth: "thin",
+		scrollbarGutter: "stable",
+		scrollbarColor: `${theme.color.azure} transparent`,
+		backgroundColor: "oklch(70% 0.1 304 / 69.17%)",
+		display: ["inline", "flex"],
+		marginInline: "auto",
+		"@supports": {
+			"(display: grid)": {
+				display: "grid",
+				gridTemplateColumns: "max-content 1fr max-content",
+				gridTemplateRows: "min-content 1fr",
+				justifyContent: "center",
+        alignContent:'center'
+			},
+		},
+	},
 ]);
 
+export const gridAreaCss = {
+	text: style({
+		gridArea: "1 / 1 / 2 / 4",
+    textAlign:'center',
+    marginBlockStart:30
+	}),
+	prevButton: style({
+		gridArea: "2 / 1 / 3 / 2",
+	}),
+	carrousel: style({
+		gridArea: "2 / 2 / 3 / 3",
+	}),
+	nextButton: style({
+		gridArea: "2 / 3 / 3 / 4",
+	}),
+};
+
 export const carrouselContainer = style([
-  {
-    overflowBlock: "hidden",
-    display: "block flex",
-    gap: vars.space.gap,
-    flexWrap: "nowrap",
-    padding: `calc(${vars.space.gap} * 0.5)`,
-    backgroundColor: "red",
-    border: `1.5px solid ${theme.color.azure}`,
-    overflowX: "auto",
-    scrollSnapType: "x proximity",
-    scrollSnapAlign: "center",
-    scrollPaddingInline: 0,
-    "@media": {
-      [media.lg]: {
-        //overflowX: 'hidden',
-        scrollPaddingInline: `calc(${vars.space.gap} * 0.5)`,
-        scrollSnapAlign: "start",
-        padding: "1rem",
-        marginBlockEnd: 20,
-      },
-    },
-  },
-  responsiveTheme,
-  container.small,
+	{
+		overflowBlock: "hidden",
+		display: "block flex",
+		gap: vars.space.gap,
+		flexWrap: "nowrap",
+		padding: `calc(${vars.space.gap} * 0.5)`,
+		backgroundColor: "red",
+		border: `1.5px solid ${theme.color.azure}`,
+		overflowX: "auto",
+		scrollSnapType: "x proximity",
+		scrollSnapAlign: "center",
+		scrollPaddingInline: 0,
+		"@media": {
+			[media.lg]: {
+				//overflowX: 'hidden',
+				scrollPaddingInline: `calc(${vars.space.gap} * 0.5)`,
+				scrollSnapAlign: "start",
+				padding: "1rem",
+				marginBlockEnd: 20,
+			},
+		},
+	},
+	responsiveTheme,
+	container.small,
+	gridAreaCss.carrousel,
 ]);
 
 /** MARK: BUTTON

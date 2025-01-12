@@ -11,6 +11,9 @@ export const grandParent = component$(() => {
   return (
     <div>
       <h1>data received from child : {dataStore.message}</h1>
+      <button type="button" onClick$={() => handleDataFromChild('FUCK YOU')}>
+        FUCK YOU
+      </button>
       <Parent onReceiveData={handleDataFromChild} />
     </div>
   );
@@ -24,9 +27,9 @@ export const Parent = component$(({ onReceiveData }: ParentProps) => {
   return (
     <section class={css.parent}>
       <h2>Parent component</h2>
-      <Child sendDataToGrandParent={onReceiveData} />
-      <Child sendDataToGrandParent={onReceiveData} />
-      <Child sendDataToGrandParent={onReceiveData} />
+      <Child sendDataToGrandParent={$(() => onReceiveData("1"))} />
+      <Child sendDataToGrandParent={$(() => onReceiveData("2"))} />
+      <Child sendDataToGrandParent={$(() => onReceiveData("3"))} />
     </section>
   );
 });
@@ -36,14 +39,15 @@ interface ChildProps {
 }
 
 export const Child = component$(({ sendDataToGrandParent }: ChildProps) => {
-  const sendData = $(() => {
-    sendDataToGrandParent("i am child (Qwik)!");
+  const sendData = $((X:string) => {
+   return sendDataToGrandParent(X);
   });
   return (
     <div class={css.child}>
-    <button type="button" onClick$={sendData}>
+    <button type="button" onClick$={() => sendData("default message")}>
       Send
     </button>
       </div>
   );
 });
+

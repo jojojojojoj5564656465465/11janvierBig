@@ -45,8 +45,8 @@ export default component$(() => {
             </a>
           </li>
           <li>
-            <a href="/useContext" rel="noreferrer">
-              useContext
+            <a href="/propUp" rel="noreferrer">
+              propUp
             </a>
           </li>
         </ul>

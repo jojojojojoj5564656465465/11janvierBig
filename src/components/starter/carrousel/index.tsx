@@ -7,31 +7,27 @@ import {
   useOnWindow,
   useComputed$,
   useOn,
-  createContextId,
   type Signal,
-  useTask$,
-  useContextProvider,
+  type QRL,
 } from "@builder.io/qwik";
+
 import {
   carrouselContainer,
   button,
   sectionWrapperCardButtons,
+  gridAreaCss,
 } from "./index.css";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
 import * as card from "./card.css";
-import Child from "../B";
-import PriceCtx from "@/context/price.context";
+
 type CardProps = {
   Category: string;
   Image: string;
   Gif?: string;
   Price: number;
   Link: string;
+  fromParentFunction: QRL<(x: number) => void>;
 };
-type PriceContext = number;
-export const PriceContext = createContextId<Signal<PriceContext>>(
-  "price.hover-context",
-);
 
 /** MARK: Card
  * @param {CardProps} props - The props for the Card component.
@@ -42,7 +38,7 @@ export const PriceContext = createContextId<Signal<PriceContext>>(
  * @returns {JSX.Element} The rendered Card component.
  */
 const Card = component$<CardProps>((props) => {
-  const PriceHover = useSignal(0);
+  //const PriceHover = useSignal(0);
 
   // useTask$( () => {
   //   PriceHover.value = props.Price
@@ -50,9 +46,10 @@ const Card = component$<CardProps>((props) => {
   useOn(
     "mouseenter",
     $(() => {
-      PriceHover.value = props.Price;
-      alert(PriceHover.value);
-    }),
+      // PriceHover.value = props.Price;
+      //alert(PriceHover.value);
+      props.fromParentFunction(props.Price);
+    })
   );
   //useContextProvider(PriceCtx, PriceHover);
   return (
@@ -92,6 +89,10 @@ const Card = component$<CardProps>((props) => {
 /** MARK: Cards wrapper */
 export default component$(() => {
   const wrapperRef = useSignal<HTMLDivElement>();
+  const priceHover = useSignal<number>(300);
+  const HandlePriceHoverFromChild = $((x: number): void => {
+    priceHover.value = x;
+  });
 
   type Wrapper = {
     clientWidth: number;
@@ -150,21 +151,27 @@ export default component$(() => {
         move("LEFT");
       }
       return;
-    }),
+    })
   );
   return (
     <>
       <section class={sectionWrapperCardButtons}>
-        <Child />
+        <div class={gridAreaCss.text}>
+          <h2>Éxemple de mes réalisations:</h2>
+          <h4>A partir de : {priceHover.value}€</h4>
+        </div>
         <button
           type="button"
-          class={buttonState.prev.value ? button.available : button.disable}
+          class={[
+            gridAreaCss.prevButton,
+            buttonState.prev.value ? button.available : button.disable,
+          ]}
           onClick$={$(() => move("LEFT"))}
         >
           ← Prev
         </button>
         <div class={carrouselContainer} ref={wrapperRef}>
-          {Array.from({ length: 5 }, (_, i) => {
+          {Array.from({ length: 6 }, (_, i) => {
             return (
               <Card
                 key={`Cards example n°${
@@ -173,16 +180,24 @@ export default component$(() => {
                 }`}
                 Category={`${i} ${wrapper.scrollLeft} ${wrapper.scrollWidth}`}
                 Link="/"
-                Price={i}
+                Price={(i+1)*125}
                 Image="/images/image-mobile.avif"
                 Gif="/images/giphy.webp"
+                fromParentFunction={HandlePriceHoverFromChild}
               />
             );
-          })}
+          }
+          
+          
+          )}
+          
         </div>
         <button
           type="button"
-          class={buttonState.next.value ? button.available : button.disable}
+          class={[
+            gridAreaCss.nextButton,
+            buttonState.next.value ? button.available : button.disable,
+          ]}
           onClick$={$(() => move("RIGHT"))}
         >
           Next →

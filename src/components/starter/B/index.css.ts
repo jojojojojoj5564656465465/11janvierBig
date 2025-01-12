@@ -17,8 +17,10 @@ export default {
 		minWidth: "80%",
 	}),
 	child: style({
-		display: "inline",
+		display: "inline block",
 		backgroundColor: "orange",
 		width: 150,
+    border:"2px solid red",
+    paddingInline:"auto"
 	}),
 };
