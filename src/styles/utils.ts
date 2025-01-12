@@ -1,9 +1,9 @@
 import * as v from "valibot";
 
 /**
- * 
+ *
  * @param x @deprecated
- * @returns 
+ * @returns
  */
 export function hoverfn(x: string) {
   return {
@@ -27,8 +27,6 @@ export function hoverfn(x: string) {
     },
   };
 }
-
-
 
 /**
  * @description Calculates a fluid value based px

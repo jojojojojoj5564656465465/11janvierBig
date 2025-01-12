@@ -6,7 +6,7 @@ import Hero from "../components/starter/hero/hero";
 import Infobox from "../components/starter/infobox/infobox";
 import Starter from "../components/starter/next-steps/next-steps";
 import A from "@components/starter/a/A";
-import Carrousel from "@components/starter/carrousel"
+import Carrousel from "@components/starter/carrousel";
 export default component$(() => {
   return (
     <>

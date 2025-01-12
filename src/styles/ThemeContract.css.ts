@@ -32,60 +32,57 @@ export const media = {
   dark: "screen and (prefers-color-scheme: dark)",
 } as const;
 
-
 type hoverProps = {
-  backgroundColor: string
-  color?: string | 'inherit'
-}
+  backgroundColor: string;
+  color?: string | "inherit";
+};
 
 export const hover = (props: hoverProps) => {
   return style({
-    ':active': {
+    ":active": {
       backgroundColor: props.backgroundColor,
-      color:  'inherit',
+      color: "inherit",
     },
-    ':focus': {
+    ":focus": {
       outline: `4px solid ${props.backgroundColor}`,
-      outlineOffset: '1px',
-      color: 'inherit',
+      outlineOffset: "1px",
+      color: "inherit",
     },
-    '@media': {
+    "@media": {
       [media.md]: {
-        ':hover': {
+        ":hover": {
           backgroundColor: props.backgroundColor,
-          color: props.color ?? 'inherit',
+          color: props.color ?? "inherit",
         },
       },
     },
-  })
-}
-	
-
+  });
+};
 
 export function flex(
-  direction: 'row' | 'column',
+  direction: "row" | "column",
   flexNumber: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9,
 ) {
-  type PositionProps = Readonly<'start' | 'center' | 'end'>
+  type PositionProps = Readonly<"start" | "center" | "end">;
   const positions = {
-    1: ['start', 'start'],
-    2: ['center', 'start'],
-    3: ['end', 'start'],
-    4: ['start', 'center'],
-    5: ['center', 'center'],
-    6: ['end', 'center'],
-    7: ['start', 'end'],
-    8: ['center', 'end'],
-    9: ['end', 'end'],
+    1: ["start", "start"],
+    2: ["center", "start"],
+    3: ["end", "start"],
+    4: ["start", "center"],
+    5: ["center", "center"],
+    6: ["end", "center"],
+    7: ["start", "end"],
+    8: ["center", "end"],
+    9: ["end", "end"],
   } as const satisfies Record<
     typeof flexNumber,
     readonly [PositionProps, PositionProps]
-  >
-  const [justify, align] = positions[flexNumber]
+  >;
+  const [justify, align] = positions[flexNumber];
   return style({
-    display: 'block flex',
+    display: "block flex",
     flexDirection: direction,
     justifyContent: justify,
     alignItems: align,
-  })
+  });
 }
