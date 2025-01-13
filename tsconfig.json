@@ -20,6 +20,8 @@
       "~/*": ["./src/*"],
       "@/*": ["./src/*"],
       "@components/*": ["./src/components/*"],
+      "@fonts/*": ["./public/fonts/*"],
+      "@images/*": ["./public/images/*"],
       "@theme": ["./src/styles/ThemeContract.css.ts"]
     }
   },

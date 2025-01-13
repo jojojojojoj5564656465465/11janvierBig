@@ -15,10 +15,8 @@ globalStyle(":root , ::backdrop", {
       vars: assignVars(theme, {
         fontSize: tokens.fontSizes,
         color: light,
-        fontFamily: tokens.fontFamilies,
-        size: tokens.sizes,
+
         space: tokens.spaces,
-        radius: tokens.radii,
       }),
     },
     "(prefers-color-scheme: dark)": {

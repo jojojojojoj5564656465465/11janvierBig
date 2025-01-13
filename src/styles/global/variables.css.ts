@@ -92,4 +92,4 @@ const globalVars = createGlobalTheme(":root", {
   },
 });
 
-globalVars.sizes["4xl"];
+

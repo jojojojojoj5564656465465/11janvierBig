@@ -38,20 +38,13 @@ type CardProps = {
  * @returns {JSX.Element} The rendered Card component.
  */
 const Card = component$<CardProps>((props) => {
-  //const PriceHover = useSignal(0);
 
-  // useTask$( () => {
-  //   PriceHover.value = props.Price
-  // })
   useOn(
-    "mouseenter",
+    "mouseover",
     $(() => {
-      // PriceHover.value = props.Price;
-      //alert(PriceHover.value);
       props.fromParentFunction(props.Price);
     })
   );
-  //useContextProvider(PriceCtx, PriceHover);
   return (
     <section class={card.wrapperCard}>
       {/* biome-ignore lint/style/useSelfClosingElements: <explanation> */}
@@ -89,7 +82,7 @@ const Card = component$<CardProps>((props) => {
 /** MARK: Cards wrapper */
 export default component$(() => {
   const wrapperRef = useSignal<HTMLDivElement>();
-  const priceHover = useSignal<number>(300);
+  const priceHover = useSignal<number>(450);
   const HandlePriceHoverFromChild = $((x: number): void => {
     priceHover.value = x;
   });
@@ -157,8 +150,8 @@ export default component$(() => {
     <>
       <section class={sectionWrapperCardButtons}>
         <div class={gridAreaCss.text}>
-          <h2>Éxemple de mes réalisations:</h2>
-          <h4>A partir de : {priceHover.value}€</h4>
+          <h2>Éxemple de mes réalisations : </h2>
+          <h4>Votre visite virtuelle à partir de : <span>{priceHover.value}€</span></h4>
         </div>
         <button
           type="button"
@@ -180,17 +173,13 @@ export default component$(() => {
                 }`}
                 Category={`${i} ${wrapper.scrollLeft} ${wrapper.scrollWidth}`}
                 Link="/"
-                Price={(i+1)*125}
+                Price={(i + 1) * 125}
                 Image="/images/image-mobile.avif"
                 Gif="/images/giphy.webp"
                 fromParentFunction={HandlePriceHoverFromChild}
               />
             );
-          }
-          
-          
-          )}
-          
+          })}
         </div>
         <button
           type="button"

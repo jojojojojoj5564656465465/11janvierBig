@@ -34,6 +34,8 @@ export default defineConfig(({ command, mode }): UserConfig => {
 				alias: {
 					"@": path.resolve(__dirname, "./src"),
 					"@components": path.resolve(__dirname, "./src/components"),
+					"@fonts": path.resolve(__dirname, "./public/fonts"),
+					"@images": path.resolve(__dirname, "./public/images"),
 				},
 			},
 			// This tells Vite which dependencies to pre-build in dev mode.
