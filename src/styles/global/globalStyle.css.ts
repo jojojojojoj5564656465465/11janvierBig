@@ -4,27 +4,28 @@ import { assignVars, globalStyle } from "@vanilla-extract/css";
 import { theme } from "../ThemeContract.css";
 import tokens from "../tokens/index";
 import { light, dark } from "../tokens/color/colors";
+import { fontsFamily } from "@/styles/tokens/font/fontFamilies.css";
 
 import "@/styles/tokens/font/index";
 
 //import { optimalFontSizePerTag } from '~/styles/tokens/font/index'
 
 globalStyle(":root , ::backdrop", {
-  "@media": {
-    screen: {
-      vars: assignVars(theme, {
-        fontSize: tokens.fontSizes,
-        color: light,
-
-        space: tokens.spaces,
-      }),
-    },
-    "(prefers-color-scheme: dark)": {
-      vars: assignVars(theme.color, {
-        ...dark,
-      }),
-    },
-  },
+	"@media": {
+		screen: {
+			vars: assignVars(theme, {
+				fontSize: tokens.fontSizes,
+				color: light,
+				fontsFamily,
+				space: tokens.spaces,
+			}),
+		},
+		"(prefers-color-scheme: dark)": {
+			vars: assignVars(theme.color, {
+				...dark,
+			}),
+		},
+	},
 });
 
 // for (const [property, value] of Object.entries(optimalFontSizePerTag)) {

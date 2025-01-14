@@ -1,6 +1,5 @@
 import { $, component$, type QRL, useStore } from "@builder.io/qwik";
-import css from "./index.css"
-
+import css from "./index.css";
 
 export const grandParent = component$(() => {
   const dataStore = useStore({ message: "Default" });
@@ -11,7 +10,7 @@ export const grandParent = component$(() => {
   return (
     <div>
       <h1>data received from child : {dataStore.message}</h1>
-      <button type="button" onClick$={() => handleDataFromChild('FUCK YOU')}>
+      <button type="button" onClick$={() => handleDataFromChild("FUCK YOU")}>
         FUCK YOU
       </button>
       <Parent onReceiveData={handleDataFromChild} />
@@ -39,15 +38,14 @@ interface ChildProps {
 }
 
 export const Child = component$(({ sendDataToGrandParent }: ChildProps) => {
-  const sendData = $((X:string) => {
-   return sendDataToGrandParent(X);
+  const sendData = $((X: string) => {
+    return sendDataToGrandParent(X);
   });
   return (
     <div class={css.child}>
-    <button type="button" onClick$={() => sendData("default message")}>
-      Send
-    </button>
-      </div>
+      <button type="button" onClick$={() => sendData("default message")}>
+        Send
+      </button>
+    </div>
   );
 });
-

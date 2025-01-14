@@ -7,9 +7,9 @@ import { spaces } from "./size/index";
  * ! This file is auto generated !
  */
 const tokens = {
-	// colors,
-	fontSizes,
+  // colors,
+  fontSizes,
 
-	spaces,
+  spaces,
 };
 export default tokens;

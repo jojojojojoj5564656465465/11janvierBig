@@ -1,7 +1,6 @@
-
 /**
- * 
- * @description Import this file at root of Layout 
+ *
+ * @description Import this file at root of Layout
  */
 export * from "./globalStyle.css";
 export * from "./reset.css";

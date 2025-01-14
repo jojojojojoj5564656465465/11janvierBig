@@ -1,14 +1,21 @@
-import { createThemeContract, globalStyle, style, styleVariants } from "@vanilla-extract/css";
+import {
+	createGlobalTheme,
+	createThemeContract,
+	globalStyle,
+	style,
+	styleVariants,
+} from "@vanilla-extract/css";
 
 import tokens from "./tokens/index";
 import { light } from "./tokens/color/colors";
-export * from "@/styles/tokens/font/fontFamilies.css";
-
+///export * from "@/styles/tokens/font/fontFamilies.css";
+import { fontsFamily } from "@/styles/tokens/font/fontFamilies.css";
 
 export const theme = createThemeContract({
 	fontSize: tokens.fontSizes,
 	color: light,
 	space: tokens.spaces,
+	fontsFamily,
 });
 
 export const media = {
@@ -42,7 +49,7 @@ type hoverProps = {
  * @param {hoverProps} props
  * @returns {*}
  */
-export const hover = ({ backgroundColor,color }: hoverProps) => {
+export const hover = ({ backgroundColor, color }: hoverProps) => {
 	return style({
 		":active": {
 			backgroundColor,
@@ -64,14 +71,13 @@ export const hover = ({ backgroundColor,color }: hoverProps) => {
 	});
 };
 
-
 /**
  * Description placeholder
  *
  * @export
  * @param {("row" | "column")} direction  row or column
- * @param {(1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)} flexNumber 
- * @returns {*} 
+ * @param {(1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)} flexNumber
+ * @returns {*}
  * MARK: FLEX
  */
 export function flex(
@@ -102,7 +108,6 @@ export function flex(
 	});
 }
 
-
 /**
  * MARK: Container Rules
  */
@@ -111,10 +116,10 @@ export const containerSize = {
 	small: "60rem",
 	medium: "72rem",
 	large: "90rem",
-	full: "100%",
+	full: "100svw",
 };
 const maxInlineSizeFn = (x: keyof typeof containerSize): string => {
-	return `min(calc(100% - clamp(0.75rem, 0.42rem + 1.7vw, 1.7rem) * 2), ${containerSize[x]})`;
+  return `min(calc(100% - clamp(0.75rem, 0.42rem + 1.7vw, 1.7rem) * 2), ${containerSize[x]}, 130rem)`;
 };
 
 const defaultContainer = style({
@@ -159,3 +164,11 @@ globalStyle(`${container.default} > ${container.large}`, {
 globalStyle(`${container.default} > ${container.full}`, {
 	maxInlineSize: maxInlineSizeFn("full"),
 });
+
+
+// export const fonts = createGlobalTheme(":root", {
+// 	dancingScript: `${fontsFamily.dancingScript}`,
+// 	exo: `${fontsFamily.exo}, sans-serif`,
+// 	libreFranklin: `${fontsFamily.libreFranklin}, sans-serif`,
+// 	nunito: `${fontsFamily.nunito}, sans-serif`,
+// });

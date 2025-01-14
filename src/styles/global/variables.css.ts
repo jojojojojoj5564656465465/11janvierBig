@@ -91,5 +91,3 @@ const globalVars = createGlobalTheme(":root", {
     8: "8px",
   },
 });
-
-

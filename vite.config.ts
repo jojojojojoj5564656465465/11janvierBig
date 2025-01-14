@@ -10,6 +10,7 @@ import pkg from "./package.json";
 import path from "node:path";
 import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
 type PkgDep = Record<string, string>;
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 const { dependencies = {}, devDependencies = {} } = pkg as any as {
   dependencies: PkgDep;
   devDependencies: PkgDep;
@@ -34,8 +35,8 @@ export default defineConfig(({ command, mode }): UserConfig => {
 				alias: {
 					"@": path.resolve(__dirname, "./src"),
 					"@components": path.resolve(__dirname, "./src/components"),
-					"@fonts": path.resolve(__dirname, "./public/fonts"),
-					"@images": path.resolve(__dirname, "./public/images"),
+					"@fonts": path.resolve(__dirname, "./fonts"),
+					"@images": path.resolve(__dirname, "./images"),
 				},
 			},
 			// This tells Vite which dependencies to pre-build in dev mode.
