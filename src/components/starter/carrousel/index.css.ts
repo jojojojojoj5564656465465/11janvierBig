@@ -52,9 +52,9 @@ export const responsiveTheme = style({
 	},
 });
 
-
 export const gridAreaCss = {
-	text: style({
+	text: style({ 
+  marginBlockEnd: 30,
 		gridArea: "1 / 1 / 2 / 4",
 		textAlign: "center",
 		marginBlockStart: 30,
@@ -166,13 +166,12 @@ export const button = styleVariants({
 	],
 });
 
-
-
-
 export const sectionWrapperCardButtons = style([
 	container.large,
 
 	{
+		isolation: "isolate",
+		position: "relative",
 		fontFamily: theme.fontsFamily.dancingScript,
 		scrollbarWidth: "thin",
 		scrollbarGutter: "stable",
@@ -191,3 +190,33 @@ export const sectionWrapperCardButtons = style([
 		},
 	},
 ]);
+
+export const mainSectionRelative = style([
+	container.large,
+	{ position: "relative", isolation: "isolate" },
+]);
+export const spanAbsolutePriceHover = style({
+	position: "absolute",
+	maxInlineSize: 100,
+	inlineSize: 65,
+	backgroundColor: theme.color.black,
+	color: theme.color.white,
+
+	top: 15,
+	right: 45,
+	aspectRatio: "1",
+	display: "grid",
+	placeItems: "center",
+	textAlign: "center",
+	clipPath:
+		"polygon(50% 0%, 83% 12%, 100% 43%, 94% 78%, 68% 100%, 32% 100%, 6% 78%, 0% 43%, 17% 12%)",
+	"@media": {
+		[media.mobile.portrait]: {
+			display: "none",
+		},
+	},
+	"::before": {
+		content: "À partir de",
+		fontSize: 8,
+	},
+});

@@ -16,10 +16,13 @@ import {
   button,
   sectionWrapperCardButtons,
   gridAreaCss,
+  spanAbsolutePriceHover,
+  mainSectionRelative,
 } from "./index.css";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
 import * as card from "./card.css";
 import list from "./data";
+import { container } from "~/styles/ThemeContract.css";
 type CardProps = {
   Category: string;
   Image: string;
@@ -134,49 +137,52 @@ export default component$(() => {
   );
   return (
     <>
-      <section class={sectionWrapperCardButtons}>
-        <div class={gridAreaCss.text}>
-          <h2>Éxemple de mes réalisations : </h2>
-          <h4>
-            Votre visite virtuelle à partir de :{" "}
-            <span>{priceHover.value}€</span>
-          </h4>
-        </div>
-        <button
-          type="button"
-          class={[
-            gridAreaCss.prevButton,
-            buttonState.prev.value ? button.available : button.disable,
-          ]}
-          onClick$={$(() => move("LEFT"))}
-        >
-          ← Prev
-        </button>
-        <div class={carrouselContainer} ref={wrapperRef}>
-          {list.map((el,i) => {
-            return (
-              <Card
-                key={`Cards example n°${i}`}
-                Category={el.Category}
-                Link={el.Link}
-                Price={el.Price}
-                Image={el.Image}
-                Gif={el.Gif}
-                fromParentFunction={HandlePriceHoverFromChild}
-              />
-            );
-          })}
-        </div>
-        <button
-          type="button"
-          class={[
-            gridAreaCss.nextButton,
-            buttonState.next.value ? button.available : button.disable,
-          ]}
-          onClick$={$(() => move("RIGHT"))}
-        >
-          Next →
-        </button>
+      <section class={mainSectionRelative}>
+        <section class={sectionWrapperCardButtons}>
+          <div class={gridAreaCss.text}>
+            <h2>Éxemple de mes réalisations : </h2>
+           
+          </div>
+          <button
+            type="button"
+            class={[
+              gridAreaCss.prevButton,
+              buttonState.prev.value ? button.available : button.disable,
+            ]}
+            onClick$={$(() => move("LEFT"))}
+          >
+            ← Prev
+          </button>
+          <div class={carrouselContainer} ref={wrapperRef}>
+            {list.map((el, i) => {
+              return (
+                <Card
+                  key={`Cards example n°${i}`}
+                  Category={el.Category}
+                  Link={el.Link}
+                  Price={el.Price}
+                  Image={el.Image}
+                  Gif={el.Gif}
+                  fromParentFunction={HandlePriceHoverFromChild}
+                />
+              );
+            })}
+          </div>
+          <button
+            type="button"
+            class={[
+              gridAreaCss.nextButton,
+              buttonState.next.value ? button.available : button.disable,
+            ]}
+            onClick$={$(() => move("RIGHT"))}
+          >
+            Next →
+          </button>
+        </section>
+        <span class={spanAbsolutePriceHover}>
+      
+          {priceHover.value}€
+        </span>
       </section>
     </>
   );

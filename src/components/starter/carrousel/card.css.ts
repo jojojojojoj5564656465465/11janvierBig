@@ -118,7 +118,6 @@ export const wrapperCard = style([
 	ColorTheme,
 ]);
 
-
 export const price = style([
   {
     WebkitBoxOrient: "vertical",
