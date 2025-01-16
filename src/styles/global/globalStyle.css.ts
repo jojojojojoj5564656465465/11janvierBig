@@ -100,8 +100,10 @@ globalStyle("a", {
   textDecoration: "none",
 });
 
-globalStyle("a:hover", {
-  textDecoration: "underline",
+globalStyle(":root", {
+  colorScheme: "light dark",
 });
-
+globalStyle("a:hover", {
+	textDecoration: "underline",
+});
 export { theme };
