@@ -190,6 +190,7 @@ export const sectionWrapperCardButtons = style([
 		animationDuration: "4s",
 		animationIterationCount: "1",
 		animationTimeline: "view()",
+		animationRange: "entry 0 cover 40%",
 
 		isolation: "isolate",
 		position: "relative",
@@ -201,6 +202,7 @@ export const sectionWrapperCardButtons = style([
 			"light-dark(oklch(70% 0.1 304 / 79.17%),oklch(80% 0.1 304 / 19.17%))",
 		display: ["inline", "flex"],
 		marginInline: "auto",
+		flexDirection:"column",
 		"@supports": {
 			"(display: grid)": {
 				display: "grid",
@@ -241,7 +243,7 @@ export const spanAbsolutePriceHover = style({
 	top: 15,
 	right: fluid(5, 105),
 	aspectRatio: "1",
-	display: "grid",
+	display: ["flex", "grid"],
 	alignContent: "center",
 	rowGap: fluid(5, 10),
 	placeItems: "center",
@@ -255,9 +257,22 @@ export const spanAbsolutePriceHover = style({
 		[media.mobile.landscape]: {
 			display: "none",
 		},
+		[media.tablet.portrait]: {
+			"::before": {
+				content: "",
+		
+			},
+		},
 	},
 	"::before": {
 		content: "*À partir de",
-		fontSize: 8,
+		fontSize: theme.fontSize.xs,
+		fontStyle: "oblique",
+		fontFamily:theme.fontsFamily.libreFranklin,
+		fontWeight:300
+
+
 	},
 });
+
+
