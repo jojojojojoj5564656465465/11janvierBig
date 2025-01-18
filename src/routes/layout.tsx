@@ -1,9 +1,13 @@
 import { component$, Slot, useStyles$ } from "@builder.io/qwik";
 import { routeLoader$ } from "@builder.io/qwik-city";
 import type { RequestHandler } from "@builder.io/qwik-city";
-import "@/styles/global/index.css";
+
 import Header from "../components/starter/header/header";
 import Footer from "../components/starter/footer/footer";
+//import "@styles/utils/layers.css";
+//import "@styles/utils/test.css?inline";
+
+
 
 import styles from "./styles.css?inline";
 
@@ -26,6 +30,8 @@ export const useServerTimeLoader = routeLoader$(() => {
 
 export default component$(() => {
   useStyles$(styles);
+
+
   return (
     <>
       <Header />

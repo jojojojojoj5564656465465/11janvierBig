@@ -20,9 +20,10 @@
       "~/*": ["./src/*"],
       "@/*": ["./src/*"],
       "@components/*": ["./src/components/*"],
+      "@styles/*": ["./src/styles/*"],
       "@fonts/*": ["./public/fonts/*"],
       "@images/*": ["./public/images/*"],
-      "@theme": ["./src/styles/ThemeContract.css.ts"]
+      "@theme": ["./src/styles/utils/theme.css.ts"]
     }
   },
   "files": [".eslintrc.cjs"],

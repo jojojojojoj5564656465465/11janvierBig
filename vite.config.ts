@@ -35,7 +35,8 @@ export default defineConfig(({ command, mode }): UserConfig => {
 				alias: {
 					"@": path.resolve(__dirname, "./src"),
 					"@components": path.resolve(__dirname, "./src/components"),
-					"@fonts": path.resolve(__dirname, "./fonts"),
+					"@styles": path.resolve(__dirname, "./src/styles"),
+					"@fonts": path.resolve(__dirname, "./public/fonts"),
 					"@images": path.resolve(__dirname, "./images"),
 				},
 			},

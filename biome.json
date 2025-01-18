@@ -20,8 +20,8 @@
     "enabled": true,
     "rules": {
       "recommended": true,
-      "suspicious":{
-        "noArrayIndexKey":"off"
+      "suspicious": {
+        "noArrayIndexKey": "off"
       }
     }
   },

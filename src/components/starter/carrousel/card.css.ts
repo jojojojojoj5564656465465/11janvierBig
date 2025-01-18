@@ -1,95 +1,93 @@
-import { media, theme } from "@/styles/ThemeContract.css";
-import { fluid } from "~/styles/utils";
+import * as T from "@theme";
+import { fluid } from "@styles/utils/utils.css";
 import {
 	assignVars,
 	createThemeContract,
 	globalStyle,
 	style,
 } from "@vanilla-extract/css";
-
+const ld = (light: string, dark: string) => `light-dark(${light},${dark})`;
 /* =====================================
 =               theme contract         =
 ===================================== */
 
 export const vars = createThemeContract({
-  space: {
-    items: null,
-    gap: null,
-  },
+	space: {
+		items: null,
+		gap: null,
+	},
 });
 
 export const responsiveTheme = style({
-  vars: assignVars(vars, {
-    space: {
-      items: "4",
-      gap: "1rem",
-    },
-  }),
-  "@media": {
-    "screen and (width > 1224px)": {
-      vars: assignVars(vars, {
-        space: {
-          items: "5",
-          gap: "1.16rem",
-        },
-      }),
-    },
-    "screen and (394px < width < 790px ) and (pointer: coarse)": {
-      vars: assignVars(vars, {
-        space: {
-          items: "3",
-          gap: "0.60rem",
-        },
-      }),
-    },
-    "screen and (width < 394px) and (pointer: coarse)": {
-      vars: assignVars(vars, {
-        space: {
-          items: "2",
-          gap: "0.40rem",
-        },
-      }),
-    },
-  },
-});
-
-export const varsColor = createThemeContract({
-  colorCard: {
-    title: null,
-    description: null,
-    backgroundColor: null,
-    btnColor: null,
-  },
-});
-
-export const ColorTheme = style({
-	vars: assignVars(varsColor, {
-		colorCard: {
-			title: theme.color.azure,
-			description: "#3B3561",
-			backgroundColor: "#D1D1D1",
-			btnColor: theme.color.green,
+	vars: assignVars(vars, {
+		space: {
+			items: "4",
+			gap: "1rem",
 		},
 	}),
 	"@media": {
-		[media.dark]: {
-			vars: assignVars(varsColor, {
-				colorCard: {
-					title: "#F0EDEE",
-					description: "oklch(80% 0.1285 106.94)",
-					backgroundColor: "oklch(25.88% 0.0564 243.53)",
-					btnColor: "#90DDF0",
+		"screen and (width > 1224px)": {
+			vars: assignVars(vars, {
+				space: {
+					items: "5",
+					gap: "1.16rem",
+				},
+			}),
+		},
+		"screen and (394px < width < 790px ) and (pointer: coarse)": {
+			vars: assignVars(vars, {
+				space: {
+					items: "3",
+					gap: "0.60rem",
+				},
+			}),
+		},
+		"screen and (width < 394px) and (pointer: coarse)": {
+			vars: assignVars(vars, {
+				space: {
+					items: "2",
+					gap: "0.40rem",
 				},
 			}),
 		},
 	},
 });
 
+export const varsColor = createThemeContract({
+	title: null,
+	description: null,
+	backgroundColor: null,
+	btnBgColor: null,
+	btnTextColor: null,
+});
+
+export const ColorTheme = style({
+	vars: assignVars(varsColor, {
+		title: T.color.azure,
+		description: ld("#3B3561", "white"),
+		backgroundColor: ld("#D1D1D1", "black"),
+		btnBgColor: T.color.green,
+		btnTextColor: "white",
+	}),
+	":hover": {
+		vars: assignVars(varsColor, {
+			title: ld("oklch(39.33% 0.188 263.65)", "oklch(25.29% 0.0595 155.65)"),
+			description: ld(
+				"oklch(19.33% 0.1473 261.53)",
+				"oklch(19.33% 0.1473 261.53)",
+			),
+			backgroundColor: "oklch(83.23% 0.0564 243.53)",
+			btnBgColor: ld(
+				"oklch(39.33% 0.188 263.65)",
+				"oklch(25.29% 0.0595 155.65)",
+			),
+			btnTextColor: "white",
+		}),
+	},
+});
+
 export const wrapperCard = style([
 	{
-		// display: "flex",
-
-		// flexDirection: "column",
 		display: "grid",
 		gridColumn: "1fr",
 		gridTemplateRows: "auto min-content 1fr 1fr",
@@ -100,7 +98,7 @@ export const wrapperCard = style([
 		minWidth: "200px",
 		height: "220px",
 		maxHeight: "330px",
-		backgroundColor: varsColor.colorCard.backgroundColor,
+		backgroundColor: varsColor.backgroundColor,
 		borderRadius: "10px",
 		boxShadow:
 			"0px 10px 12px rgba(0,0,0,0.08) , -4px -4px 12px rgba(0,0,0,0.08)",
@@ -113,58 +111,56 @@ export const wrapperCard = style([
 			transform: "translateY(-10px)",
 			boxShadow:
 				"0px 20px 20px rgba(0,0,0,0.1) , -4px -4px 12px rgba(0,0,0,0.08)",
+
 		},
 	},
 	ColorTheme,
 ]);
 
 export const price = style([
-  {
-    WebkitBoxOrient: "vertical",
-    overflow: "hidden",
-    display: "block",
-    WebkitLineClamp: "1",
-    lineClamp: "1",
-    margin: "0",
-    fontSize: "13px",
-    fontFamily:
-      "Lucida Sans , Lucida Sans Regular , Lucida Grande , Lucida Sans Unicode , Geneva , Verdana , sans-serif",
-    color: varsColor.colorCard.description,
-    cursor: "default",
-    "::before": {
-      content: "A partir de ",
-    },
-    "::after": {
-      content: "€",
-    },
-  },
+	{
+		WebkitBoxOrient: "vertical",
+		overflow: "hidden",
+		display: "block",
+		WebkitLineClamp: "1",
+		lineClamp: "1",
+		margin: "0",
+		fontSize: "13px",
+		fontFamily:
+			"Lucida Sans , Lucida Sans Regular , Lucida Grande , Lucida Sans Unicode , Geneva , Verdana , sans-serif",
+		color: varsColor.description,
+		cursor: "default",
+		"::before": {
+			content: "A partir de ",
+		},
+		"::after": {
+			content: "€",
+		},
+	},
 ]);
 
 export const Title = style({
-  margin: "0",
-  fontSize: "17px",
-  fontFamily:
-    "Lucida Sans , Lucida Sans Regular , Lucida Grande , Lucida Sans Unicode , Geneva , Verdana , sans-serif",
-  fontWeight: "600",
-  color: varsColor.colorCard.title,
-  cursor: "default",
-  WebkitBoxOrient: "vertical",
-  overflow: "hidden",
-  display: "-webkit-box",
-  WebkitLineClamp: "1",
-  lineClamp: "1",
+	margin: "0",
+	fontSize: "17px",
+	fontFamily: T.fontFamily.libreFranklin,
+	fontWeight: "600",
+	color: varsColor.title,
+	cursor: "default",
+	WebkitBoxOrient: "vertical",
+	overflow: "hidden",
+	display: "-webkit-box",
+	WebkitLineClamp: "1",
+	lineClamp: "1",
 });
 
-
 export const buttonBlue = style({
-	fontFamily:
-		"Lucida Sans , Lucida Sans Regular , Lucida Grande , Lucida Sans Unicode , Geneva , Verdana , sans-serif",
-	color: varsColor.colorCard.title,
+	fontFamily: T.fontFamily.exo,
+	color: varsColor.btnTextColor,
 	cursor: "pointer",
 	display: "flex",
 	justifyContent: "center",
 	alignItems: "center",
-	backgroundColor: varsColor.colorCard.btnColor,
+	backgroundColor: varsColor.btnBgColor,
 	width: "25px",
 	height: "25px",
 	maxHeight: "35px",
@@ -182,7 +178,7 @@ export const buttonBlue = style({
 		width: "100%",
 		borderRadius: "8px",
 		height: "30px",
-		
+
 		padding: "0",
 	},
 	selectors: {
@@ -194,7 +190,7 @@ export const buttonBlue = style({
 			height: "30px",
 			gap: "10px",
 			padding: "0",
-			color: "black",
+			color: varsColor.btnTextColor,
 		},
 	},
 });
@@ -215,9 +211,6 @@ export const buttonBlue_Text = style({
 		},
 	},
 });
-
-
-
 
 /**
  * Description images
@@ -252,3 +245,6 @@ export const hoverImg = style([
 		},
 	},
 ]);
+globalStyle(":root", {
+	colorScheme: "light dark",
+});

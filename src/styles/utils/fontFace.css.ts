@@ -288,7 +288,7 @@ const exo = fontFace([
   },
 ]);
 
-export const fontsFamily = {
+export default {
   exo,
   libreFranklin,
   nunito,

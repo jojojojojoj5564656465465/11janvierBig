@@ -9,6 +9,7 @@ import {
   useOn,
   type Signal,
   type QRL,
+  useStylesScoped$,
 } from "@builder.io/qwik";
 
 import {
@@ -22,7 +23,10 @@ import {
 import { assignInlineVars } from "@vanilla-extract/dynamic";
 import * as card from "./card.css";
 import list from "./data";
-import { container } from "~/styles/ThemeContract.css";
+
+import "@styles/utils/reset.css?inline";
+//import './test.css?inline'
+
 type CardProps = {
   Category: string;
   Image: string;
@@ -45,8 +49,9 @@ const Card = component$<CardProps>((props) => {
     "mouseover",
     $(() => {
       props.fromParentFunction(props.Price);
-    })
+    }),
   );
+   
   return (
     <section class={card.wrapperCard}>
       {/* biome-ignore lint/style/useSelfClosingElements: <explanation> */}
@@ -133,7 +138,7 @@ export default component$(() => {
         move("LEFT");
       }
       return;
-    })
+    }),
   );
   return (
     <>
@@ -141,7 +146,6 @@ export default component$(() => {
         <section class={sectionWrapperCardButtons}>
           <div class={gridAreaCss.text}>
             <h2>Éxemple de mes réalisations : </h2>
-           
           </div>
           <button
             type="button"
@@ -151,7 +155,7 @@ export default component$(() => {
             ]}
             onClick$={$(() => move("LEFT"))}
           >
-            ← Prev
+            ←
           </button>
           <div class={carrouselContainer} ref={wrapperRef}>
             {list.map((el, i) => {
@@ -176,13 +180,10 @@ export default component$(() => {
             ]}
             onClick$={$(() => move("RIGHT"))}
           >
-            Next →
+            →
           </button>
         </section>
-        <span class={spanAbsolutePriceHover}>
-      
-          {priceHover.value}€
-        </span>
+        <span class={spanAbsolutePriceHover}>{priceHover.value}€</span>
       </section>
     </>
   );
