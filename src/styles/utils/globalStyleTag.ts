@@ -13,13 +13,19 @@ type HTMLElements =
 	| "ol"
 	| "span";
 
-
-    /**
-     * ! ajouter un layer en plus
-     */
+/**
+ * ! ajouter un layer en plus
+ */
 type HtmlP = Partial<Record<HTMLElements, GlobalStyleRule>>;
 export const globalStyleTag = (parent: string, obj: HtmlP): void => {
 	for (const [key, value] of Object.entries(obj)) {
-		globalStyle(`${parent} ${key}`, value);
+		globalStyle(`${parent} ${key}`, {
+			"@layer": {
+				base: value,
+			},
+		});
 	}
 };
+
+
+

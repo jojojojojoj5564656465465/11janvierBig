@@ -9,7 +9,7 @@ export default component$(() => {
     <div class={s}>
       <Image/>
       <h5>h5 mon ami</h5>
-      <h6>h5 mon ami</h6>
+      <h6>h6 mon ami</h6>
       <p>p mon ami</p>
     </div>
       </>

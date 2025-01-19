@@ -1,4 +1,3 @@
-
 import {
 	globalStyle,
 	type GlobalStyleRule,
@@ -9,10 +8,11 @@ import { globalStyleTag } from "~/styles/utils/globalStyleTag";
 
 export const s = style({
 	margin: 25,
-	maxWidth: 150,
+	maxWidth: 650,
 	":hover": {
 		maxWidth: "100%",
 	},
+
 });
 
 globalStyleTag(s, {
