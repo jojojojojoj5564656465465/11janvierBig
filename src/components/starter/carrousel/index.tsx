@@ -49,9 +49,9 @@ const Card = component$<CardProps>((props) => {
     "mouseover",
     $(() => {
       props.fromParentFunction(props.Price);
-    }),
+    })
   );
-   
+
   return (
     <section class={card.wrapperCard}>
       {/* biome-ignore lint/style/useSelfClosingElements: <explanation> */}
@@ -138,7 +138,7 @@ export default component$(() => {
         move("LEFT");
       }
       return;
-    }),
+    })
   );
   return (
     <>
@@ -154,9 +154,7 @@ export default component$(() => {
               buttonState.prev.value ? button.available : button.disable,
             ]}
             onClick$={$(() => move("LEFT"))}
-          >
-            ←
-          </button>
+          />
           <div class={carrouselContainer} ref={wrapperRef}>
             {list.map((el, i) => {
               return (
@@ -172,6 +170,7 @@ export default component$(() => {
               );
             })}
           </div>
+
           <button
             type="button"
             class={[
@@ -179,9 +178,7 @@ export default component$(() => {
               buttonState.next.value ? button.available : button.disable,
             ]}
             onClick$={$(() => move("RIGHT"))}
-          >
-            →
-          </button>
+          />
         </section>
         <span class={spanAbsolutePriceHover}>{priceHover.value}€</span>
       </section>

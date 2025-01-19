@@ -6,17 +6,17 @@ import Hero from "../components/starter/hero/hero";
 import Infobox from "../components/starter/infobox/infobox";
 import Starter from "../components/starter/next-steps/next-steps";
 
+import Carrousel from "@components/starter/carrousel";
 export default component$(() => {
   return (
     <>
+    <h6>hello</h6>
       <Hero />
       <Starter />
-
       {/* biome-ignore lint/style/useSelfClosingElements: <explanation> */}
       <div role="presentation" class="ellipsis"></div>
       {/* biome-ignore lint/style/useSelfClosingElements: <explanation> */}
       <div role="presentation" class="ellipsis ellipsis-purple"></div>
-
       <div class="container container-center container-spacing-xl">
         <h3>
           You can <span class="highlight">count</span>
@@ -24,7 +24,6 @@ export default component$(() => {
         </h3>
         <Counter />
       </div>
-
       <div class="container container-flex">
         <Infobox>
           <div q:slot="title" class="icon icon-cli">
@@ -115,6 +114,7 @@ export default component$(() => {
           </Infobox>
         </div>
       </div>
+      <Carrousel/>
     </>
   );
 });

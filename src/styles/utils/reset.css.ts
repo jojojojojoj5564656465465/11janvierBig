@@ -1,6 +1,9 @@
 
 import { globalStyle } from "@vanilla-extract/css";
-import "./layers.css";
+import { globalLayer } from "@vanilla-extract/css";
+
+globalLayer("reset");
+globalLayer("base");
 
 globalStyle("*, *::before, *::after", {
 	"@layer": {
@@ -17,7 +20,6 @@ globalStyle("*", {
 			margin: 0,
 			maxWidth: "100dvw",
 			boxSizing: "border-box",
-
 		},
 	},
 });
@@ -46,7 +48,7 @@ globalStyle("input, button, textarea, select", {
 	"@layer": {
 		reset: {
 			font: "inherit",
-			all:"unset"
+			all: "unset",
 		},
 	},
 });
@@ -59,6 +61,7 @@ globalStyle("img, picture, video, canvas, svg", {
 		},
 	},
 });
+
 globalStyle(":root", {
 	"@layer": {
 		reset: {
@@ -125,7 +128,7 @@ const responsiveFontSize: Record<string, string> = {
 for (const [key, value] of Object.entries(responsiveFontSize)) {
 	globalStyle(key, {
 		"@layer": {
-			reset: {
+			base: {
 				fontSize: value,
 				overflowWrap: "break-word",
 			},
@@ -133,21 +136,24 @@ for (const [key, value] of Object.entries(responsiveFontSize)) {
 	});
 }
 
-globalStyle("h2", {
-	"@layer": {
-		framework: {
-			backgroundColor: "greenyellow",
-			color: "red",
-			paddingInline:60
+/**
+ * Font size reset
+ * MARK: FONTS
+ * @type {Record<string, string>}
+ */
+const colorFonts: Record<string, string> = {
+	h1: "oklch(80.88% 0.2319 170.47)",
+	h2: "oklch(79.11% 0.1723 123.88)",
+	h3: "oklch(79.11% 0.094 61.41)",
+	h6: "red",
+};
+for (const [key, value] of Object.entries(colorFonts)) {
+	globalStyle(key, {
+		"@layer": {
+			base: {
+				color:value
+			},
 		},
-	},
-});
-globalStyle("h2", {
-	"@layer": {
-		reset: {
-			backgroundColor: "red",
-			color: "yellowgreen",
-		},
-	},
-});
+	});
+}
 

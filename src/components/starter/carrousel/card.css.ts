@@ -111,7 +111,11 @@ export const wrapperCard = style([
 			transform: "translateY(-10px)",
 			boxShadow:
 				"0px 20px 20px rgba(0,0,0,0.1) , -4px -4px 12px rgba(0,0,0,0.08)",
-
+		},
+		":active": {
+			transform: "translateY(-10px)",
+			boxShadow:
+				"0px 20px 20px rgba(0,0,0,0.1) , -4px -4px 12px rgba(0,0,0,0.08)",
 		},
 	},
 	ColorTheme,
@@ -245,6 +249,3 @@ export const hoverImg = style([
 		},
 	},
 ]);
-globalStyle(":root", {
-	colorScheme: "light dark",
-});

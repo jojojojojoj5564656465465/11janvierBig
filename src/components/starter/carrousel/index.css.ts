@@ -11,6 +11,7 @@ import {
 import { fluid, hover, ld } from "@styles/utils/utils.css";
 import * as T from "@theme";
 import "./test.css";
+import { wrapperCard } from "./card.css";
 
 export const app = layer("app");
 
@@ -59,12 +60,14 @@ export const responsiveTheme = style({
 	},
 });
 
+
+
+
 export const gridAreaCss = styleVariants({
 	text: {
 		marginBlock: fluid(20, 60),
 		gridArea: "1 / 1 / 2 / 4",
 		textAlign: "center",
-		marginBlockStart: 30,
 		fontFamily: T.fontFamily.dancingScript,
 		fontWeight: "normal",
 	},
@@ -75,13 +78,15 @@ export const gridAreaCss = styleVariants({
 		justifySelf: "end",
 		alignSelf: "end",
 		alignContent: "center",
-		backgroundColor: "red",
 	},
 	carrousel: {
 		gridArea: "2 / 2 / 3 / 3",
 	},
 	nextButton: {
 		gridArea: "2 / 3 / 3 / 4",
+		clipPath: "polygon(0% 20%,60% 20%,60%0%,100% 50%,60% 100%,60% 80%,0% 80%)",
+		justifySelf: "start",
+		alignSelf: "start",
 	},
 });
 
@@ -124,44 +129,44 @@ export const carrouselContainer = style([
  *
  */
 const baseButton = style({
-	all: "unset",
+	//all: "unset",
 	marginBlock: "auto",
-	display: ["flex", "grid"],
-	placeItems: "center",
-	alignContent: "center",
-	color: T.color.black,
-	padding: fluid(15, 25),
-	borderRadius: "1.5rem",
-	fontSize: "1.5rem",
-	fontFamily: T.fontFamily.libreFranklin,
+	minInlineSize: "25%",
 	"@media": {
 		"only screen and (max-width: 1000px) and (pointer: coarse)": {
 			display: "none",
 		},
 	},
 });
-const greenAnimation = keyframes({
-	"0%": { boxShadow: "0 0.1px 0 0 green" },
-	"50%": { boxShadow: "0 1.00px 0 0 oklch(77.06% 0.1723 159.88 / 88.47%)" },
-	"70%": { boxShadow: "0 2.80px 0 0 oklch(77.06% 0.1723 159.88 / 38.47%)" },
-	"100%": { boxShadow: "0 4.00px 0 0 oklch(77.06% 0.1723 159.88 / 20.47%)" },
+
+
+const increaseArrowAvailable = keyframes({
+	"0%": { minInlineSize: "25%" },
+	"50%": { minInlineSize: "35%" },
+	"100%": { minInlineSize: "25%" },
 });
 export const button = styleVariants({
 	available: [
 		baseButton,
-		hover({
-			backgroundColor: "oklch(44.79% 0.1347 153.85 / 16.49%)",
-			color: "yellowgreen",
-		}),
 		{
 			cursor: "pointer",
 			background: T.color.green,
+			backgroundColor:
+				"linear-gradient(90deg, oklch(81.47% 0.0983 151.41) 0%, oklch(81.47% 0.1849 151.41) 100%)",
+
 			color: T.color.white,
 			border: "2px solid green",
 			":hover": {
-				animationName: greenAnimation,
-				animationDuration: "1s",
-				animationTimingFunction: "ease",
+				animationName: increaseArrowAvailable,
+				animationDuration: "0.7s",
+				animationTimingFunction: "linear",
+				animationIterationCount: 2,
+				backgroundColor:
+					"light-dark(oklch(81.47% 0.1849 151.41), oklch(80.88% 0.1159 190.68))",
+				borderBlock: 95,
+			},
+			":active": {
+				backgroundColor: "oklch(83.24% 0.0689 163.06)",
 			},
 		},
 	],
@@ -196,15 +201,13 @@ export const sectionWrapperCardButtons = style([
 		animationIterationCount: "1",
 		animationTimeline: "view()",
 		animationRange: "entry 0 cover 40%",
-
 		isolation: "isolate",
 		position: "relative",
 		fontFamily: T.fontFamily.dancingScript,
 		scrollbarWidth: "thin",
 		scrollbarGutter: "stable",
 		scrollbarColor: `${T.color.azure} transparent`,
-		backgroundColor:
-			"light-dark(oklch(70% 0.1 304 / 79.17%),oklch(80% 0.1 304 / 19.17%))",
+
 		display: ["inline", "flex"],
 
 		marginInline: "auto",
@@ -248,15 +251,14 @@ export const spanAbsolutePriceHover = style({
 	position: "absolute",
 	maxInlineSize: 100,
 	inlineSize: fluid(60, 105),
-	backgroundColor: ld(
-		"oklch(36.05% 0.1661 240.35)",
-		"oklch(64.12% 0.1661 240.35)",
-	),
-	color: T.color.white,
+
+	background:
+		"radial-gradient(circle,oklch(73.74% 0.1191 248.82) 0% ,oklch(52.37% 0.1191 248.82) 80%, oklch(21.81% 0.1191 248.82) 100%)",
+
+	color: "white",
 	fontSize: T.fontSize.md,
 	fontFamily: T.fontFamily.exo,
 	letterSpacing: "2.5px",
-
 	fontWeight: "800",
 	top: 15,
 	right: fluid(5, 105),
