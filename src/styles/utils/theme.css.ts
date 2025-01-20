@@ -7,7 +7,7 @@ import {
 import f from "./fontFace.css";
 import { ld } from "./utils.css";
 
-//import "./layers.css"
+
 
 const fontFamily = createGlobalTheme(":root", {
 	dancingScript: `${f.dancingScript}, Times, serif`,
@@ -87,7 +87,7 @@ export const containerSize = {
 	large: "90rem",
 	full: "100svw",
 } as const;
-Object.freeze(containerSize);
+
 const maxInlineSizeFn = (x: keyof typeof containerSize): string => {
 	return `min(calc(100% - clamp(0.75rem, 0.42rem + 1.7vw, 1.7rem) * 2), ${containerSize[x]}, 130rem)`;
 };
@@ -97,6 +97,13 @@ const defaultContainer = style({
 	position: "relative",
 	boxSizing: "border-box",
 });
+
+const cos = styleVariants(containerSize, (x) => [
+	defaultContainer,
+	{
+		maxInlineSize: `min(calc(100% - clamp(0.75rem, 0.42rem + 1.7vw, 1.7rem) * 2), ${x}, 130rem)`,
+	},
+]);
 
 const container = styleVariants({
 	default: [defaultContainer],

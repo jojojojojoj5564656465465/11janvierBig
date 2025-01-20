@@ -1,10 +1,10 @@
 import {
 	globalStyle,
-	type GlobalStyleRule,
+	keyframes,
 	style,
 	styleVariants,
 } from "@vanilla-extract/css";
-import { globalStyleTag } from "~/styles/utils/globalStyleTag";
+import { flex } from "~/styles/utils/utils.css";
 
 export const s = style({
 	margin: 25,
@@ -21,6 +21,8 @@ export const s = style({
 export const baseImage = style({
 	width: 500,
 
+	backgroundPosition: "bottom",
+	backgroundSize: "cover",
 	gridRow: "1 / span 2",
 	gridColumn: "1 / span 2",
 	borderWidth: 10,
@@ -29,11 +31,37 @@ export const baseImage = style({
 
 const palette = {
 	primary: { bg: "blue", h: 650 },
-	secondary: { bg: "green", h: 230 },
+	secondary: { bg: "green", h: 10 },
 	ternary: { bg: "yellow", h: 100 },
-}as const ;
+} as const;
 
 export const variant = styleVariants(palette, ({ bg, h }) => [
 	baseImage,
-	{ background: bg, height: h },
+	{
+		background: bg,
+		backgroundImage: "url(@images/giphy.webp)",
+		height: h,
+	},
 ]);
+const rideau = keyframes({
+	"0%": { height: 100 },
+	"100%": { height: 650 },
+});
+export const second = style([
+	{
+		backgroundImage: "url(@images/nasa-rTZW4f02zY8-unsplash.jpg)",
+		backgroundColor: "green",
+		height: 50,
+		cursor: "pointer",
+		":hover": {
+			animationName: rideau,
+			animationDuration: "3s",
+		},
+	},
+	baseImage,
+]);
+
+export const r = style([flex("column", 2),{gap:20}]);
+globalStyle(`${r} > div`, {
+	"@layer": { base: { width: "60px", aspectRatio: 1, backgroundColor: "red" } },
+});

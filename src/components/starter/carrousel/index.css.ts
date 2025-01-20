@@ -37,7 +37,7 @@ export const responsiveTheme = style({
 			vars: assignVars(vars, {
 				space: {
 					items: "5",
-					gap: "1.16rem",
+					gap: "1.2rem",
 				},
 			}),
 		},
@@ -154,7 +154,7 @@ export const button = styleVariants({
 			backgroundColor:
 				"linear-gradient(90deg, oklch(81.47% 0.0983 151.41) 0%, oklch(81.47% 0.1849 151.41) 100%)",
 
-			color: T.color.white,
+
 			border: "2px solid green",
 			":hover": {
 				animationName: increaseArrowAvailable,
@@ -174,7 +174,6 @@ export const button = styleVariants({
 		baseButton,
 		{
 			background: "oklch(89.76% 0.0031 34 / 85.4%)",
-			color: T.color.red,
 			cursor: "not-allowed",
 			pointerEvents: "painted",
 			border: `1.5px solid ${T.color.red}`,
@@ -193,7 +192,7 @@ const hideStar = keyframes({
 });
 
 export const sectionWrapperCardButtons = style([
-	T.container.large,
+	
 
 	{
 		animationName: hideStar,

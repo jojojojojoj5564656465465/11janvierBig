@@ -129,6 +129,8 @@ for (const [key, value] of Object.entries(responsiveFontSize)) {
 	globalStyle(key, {
 		"@layer": {
 			base: {
+				margin:0,
+				textWrap:"pretty",				
 				fontSize: value,
 				overflowWrap: "break-word",
 			},
@@ -157,3 +159,7 @@ for (const [key, value] of Object.entries(colorFonts)) {
 	});
 }
 
+globalStyle(":where(h1, h2, h3, h4, h5, h6, p)",{
+	margin:0,
+	
+})

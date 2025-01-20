@@ -17,15 +17,20 @@ type HTMLElements =
  * ! ajouter un layer en plus
  */
 type HtmlP = Partial<Record<HTMLElements, GlobalStyleRule>>;
+/**
+ * Applique des styles globaux à des éléments HTML donnés sous un parent spécifié.
+ * @param parent - Le sélecteur parent pour les styles.
+ * @param obj - Un objet de styles à appliquer aux éléments HTML.
+ */
 export const globalStyleTag = (parent: string, obj: HtmlP): void => {
-	for (const [key, value] of Object.entries(obj)) {
-		globalStyle(`${parent} ${key}`, {
-			"@layer": {
-				base: value,
-			},
-		});
-	}
+	// biome-ignore lint/complexity/noForEach: <explanation>
+	Object.entries(obj).forEach(([key, value]) => {
+		if (value) {
+			globalStyle(`${parent} ${key}`, {
+				"@layer": {
+					base: value,
+				},
+			});
+		}
+	});
 };
-
-
-

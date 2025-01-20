@@ -1,4 +1,4 @@
-import { style } from "@vanilla-extract/css";
+import { fallbackVar, style } from "@vanilla-extract/css";
 import * as v from "valibot";
 
 type hoverProps = {
@@ -64,11 +64,11 @@ export function flex(
   >;
   const [justify, align] = positions[flexNumber];
   return style({
-    display: "block flex",
-    flexDirection: direction,
-    justifyContent: justify,
-    alignItems: align,
-  });
+			display: "flex",
+			flexDirection:  "row",
+			justifyContent: justify,
+			alignItems: align, 
+		});
 }
 
 /**

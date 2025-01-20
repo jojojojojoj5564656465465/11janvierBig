@@ -29,7 +29,7 @@ export const responsiveTheme = style({
 		"screen and (width > 1224px)": {
 			vars: assignVars(vars, {
 				space: {
-					items: "5",
+					items: "4",
 					gap: "1.16rem",
 				},
 			}),
@@ -99,7 +99,7 @@ export const wrapperCard = style([
 		height: "220px",
 		maxHeight: "330px",
 		backgroundColor: varsColor.backgroundColor,
-		borderRadius: "10px",
+		borderRadius: "20px 5px",
 		boxShadow:
 			"0px 10px 12px rgba(0,0,0,0.08) , -4px -4px 12px rgba(0,0,0,0.08)",
 		overflow: "hidden",

@@ -4,8 +4,8 @@ import type { RequestHandler } from "@builder.io/qwik-city";
 
 import Header from "../components/starter/header/header";
 import Footer from "../components/starter/footer/footer";
-//import "@styles/utils/layers.css";
-//import "@styles/utils/test.css?inline";
+
+//import "@/styles/utils"
 
 
 
